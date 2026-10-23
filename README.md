@@ -14,10 +14,12 @@
 ## 安裝
 
 ```bash
-git clone <this repo> && cd linode-agent
+# 直接安裝（需要 Go 1.25+）
+go install github.com/Miku0139oao/linode-agent/cmd/linode-agent@latest
+
+# 或從原始碼
+git clone https://github.com/Miku0139oao/linode-agent && cd linode-agent
 make build            # → ./bin/linode-agent
-# 或
-go install ./cmd/linode-agent
 ```
 
 需求：Go 1.25+。
