@@ -59,16 +59,20 @@ func TestWaitForResultReportsFailure(t *testing.T) {
 }
 
 func TestWaitTargetMapping(t *testing.T) {
-	if id, action, ok := waitTarget("linode_reboot", "linode/42"); !ok || id != 42 || action != "linode_reboot" {
-		t.Fatalf("mapping = %d %q %v", id, action, ok)
+	id, typ, action, ok := waitTarget("linode_reboot", "linode/42")
+	if !ok || id != 42 || typ != "linode" || action != "linode_reboot" {
+		t.Fatalf("mapping = %d %q %q %v", id, typ, action, ok)
 	}
-	if _, _, ok := waitTarget("linode_update", "linode/42"); ok {
+	if _, typ, _, ok := waitTarget("volume_attach", "volume/9"); !ok || typ != "volume" {
+		t.Fatalf("volume mapping type = %q ok=%v", typ, ok)
+	}
+	if _, _, _, ok := waitTarget("linode_update", "linode/42"); ok {
 		t.Fatal("linode_update has no event")
 	}
-	if _, _, ok := waitTarget("image_capture", "disk/3"); ok {
+	if _, _, _, ok := waitTarget("image_capture", "disk/3"); ok {
 		t.Fatal("image_capture is not pollable this way")
 	}
-	if _, _, ok := waitTarget("linode_reboot", "linode/notanint"); ok {
+	if _, _, _, ok := waitTarget("linode_reboot", "linode/notanint"); ok {
 		t.Fatal("bad id must not map")
 	}
 }

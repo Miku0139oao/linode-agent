@@ -9,23 +9,25 @@ import (
 )
 
 // waitTarget maps a Result (verb + target) onto the Linode event that reports
-// its progress. ok=false means this action has no pollable event.
-func waitTarget(verb, target string) (entityID int, action string, ok bool) {
+// its progress. The API's X-Filter requires entity.type alongside entity.id
+// ("Entity ID also requires Entity Type"), so the type is returned too.
+func waitTarget(verb, target string) (entityID int, entityType, action string, ok bool) {
 	parts := strings.SplitN(target, "/", 2)
 	if len(parts) != 2 {
-		return 0, "", false
+		return 0, "", "", false
 	}
 	id, err := strconv.Atoi(parts[1])
 	if err != nil {
-		return 0, "", false
+		return 0, "", "", false
 	}
 	switch verb {
-	case "linode_boot", "linode_shutdown", "linode_reboot", "linode_resize", "linode_delete",
-		"volume_create", "volume_attach", "volume_detach", "volume_resize", "volume_delete":
-		return id, verb, true
+	case "linode_boot", "linode_shutdown", "linode_reboot", "linode_resize", "linode_delete":
+		return id, "linode", verb, true
+	case "volume_create", "volume_attach", "volume_detach", "volume_resize", "volume_delete":
+		return id, "volume", verb, true
 	}
 	// linode_update has no event; image_capture reports on the image, not the disk.
-	return 0, "", false
+	return 0, "", "", false
 }
 
 // WaitForResult polls /account/events until the event produced by this action
@@ -34,7 +36,7 @@ func (s *Service) WaitForResult(ctx context.Context, res *Result, timeout time.D
 	if res == nil {
 		return nil, fmt.Errorf("nothing to wait for")
 	}
-	entityID, action, ok := waitTarget(res.Action, res.Target)
+	entityID, entityType, action, ok := waitTarget(res.Action, res.Target)
 	if !ok {
 		return nil, fmt.Errorf("%s 沒有可等待的事件", res.Action)
 	}
@@ -48,7 +50,7 @@ func (s *Service) WaitForResult(ctx context.Context, res *Result, timeout time.D
 		rows, _, err := s.list(ctx, "/account/events", ListOpts{
 			Page:     1,
 			PageSize: 25,
-			Filter:   map[string]any{"entity.id": entityID},
+			Filter:   map[string]any{"entity.id": entityID, "entity.type": entityType},
 		})
 		if err != nil {
 			return nil, err
