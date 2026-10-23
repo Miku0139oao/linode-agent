@@ -6,7 +6,7 @@ import (
 	"regexp"
 	"time"
 
-	"github.com/miku0139/linode-agent/internal/ops"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
 )
 
 var ansiPattern = regexp.MustCompile("\x1b\\[[0-9;]*[a-zA-Z]")

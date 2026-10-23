@@ -8,7 +8,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/miku0139/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/api"
 )
 
 func newWaitSvc(t *testing.T, status string) *Service {

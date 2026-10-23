@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Miku0139oao/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
+	"github.com/Miku0139oao/linode-agent/internal/render"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/miku0139/linode-agent/internal/api"
-	"github.com/miku0139/linode-agent/internal/ops"
-	"github.com/miku0139/linode-agent/internal/render"
 )
 
 // Options configures what the MCP server exposes.

@@ -6,14 +6,14 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Miku0139oao/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
+	"github.com/Miku0139oao/linode-agent/internal/render"
 	"github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/bubbles/table"
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"github.com/miku0139/linode-agent/internal/api"
-	"github.com/miku0139/linode-agent/internal/ops"
-	"github.com/miku0139/linode-agent/internal/render"
 )
 
 type resource struct {

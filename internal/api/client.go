@@ -53,7 +53,7 @@ func New(token string) *Client {
 	return &Client{
 		BaseURL:     DefaultBaseURL,
 		Token:       token,
-		UserAgent:   "linode-agent/dev (+https://github.com/miku0139/linode-agent)",
+		UserAgent:   "linode-agent/dev (+https://github.com/Miku0139oao/linode-agent)",
 		HTTPClient:  &http.Client{Timeout: 30 * time.Second},
 		MaxRetries:  3,
 		MinInterval: 0,

@@ -7,7 +7,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/miku0139/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/api"
 )
 
 // Service holds every high-level operation. CLI, TUI and MCP call into this;

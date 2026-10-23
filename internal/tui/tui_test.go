@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Miku0139oao/linode-agent/internal/ops"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/miku0139/linode-agent/internal/ops"
 )
 
 func fixture() *Model {

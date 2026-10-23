@@ -6,10 +6,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/Miku0139oao/linode-agent/internal/audit"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/miku0139/linode-agent/internal/audit"
-	"github.com/miku0139/linode-agent/internal/ops"
 )
 
 // writeHandler performs the action; dry=true must not touch the API.

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Miku0139oao/linode-agent/internal/api"
 	"github.com/mark3labs/mcp-go/mcp"
-	"github.com/miku0139/linode-agent/internal/api"
 )
 
 func TestToolsListed(t *testing.T) {

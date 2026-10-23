@@ -3,8 +3,8 @@ package cli
 import (
 	"fmt"
 
+	"github.com/Miku0139oao/linode-agent/internal/mcpserver"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/miku0139/linode-agent/internal/mcpserver"
 	"github.com/spf13/cobra"
 )
 

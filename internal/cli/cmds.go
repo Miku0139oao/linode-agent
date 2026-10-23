@@ -7,9 +7,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/miku0139/linode-agent/internal/config"
-	"github.com/miku0139/linode-agent/internal/ops"
-	"github.com/miku0139/linode-agent/internal/render"
+	"github.com/Miku0139oao/linode-agent/internal/config"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
+	"github.com/Miku0139oao/linode-agent/internal/render"
 	"github.com/spf13/cobra"
 )
 

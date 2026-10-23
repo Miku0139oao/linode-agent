@@ -9,7 +9,7 @@ import (
 	"sync/atomic"
 	"testing"
 
-	"github.com/miku0139/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/api"
 )
 
 type capture struct {

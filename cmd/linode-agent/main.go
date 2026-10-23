@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/miku0139/linode-agent/internal/cli"
+	"github.com/Miku0139oao/linode-agent/internal/cli"
 )
 
 func main() {

@@ -1,4 +1,4 @@
-module github.com/miku0139/linode-agent
+module github.com/Miku0139oao/linode-agent
 
 go 1.25.5
 

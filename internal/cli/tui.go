@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/miku0139/linode-agent/internal/tui"
+	"github.com/Miku0139oao/linode-agent/internal/tui"
 	"github.com/spf13/cobra"
 )
 

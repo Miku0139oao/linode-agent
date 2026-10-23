@@ -8,10 +8,10 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/Miku0139oao/linode-agent/internal/api"
+	"github.com/Miku0139oao/linode-agent/internal/ops"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
-	"github.com/miku0139/linode-agent/internal/api"
-	"github.com/miku0139/linode-agent/internal/ops"
 )
 
 func toolNames(t *testing.T, s *server.MCPServer) map[string]bool {
