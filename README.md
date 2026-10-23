@@ -195,6 +195,19 @@ linode-agent images capture --disk <disk-id> --label my-image [--yes]
 - `root_pass` 不會被寫進 audit 或輸出（只出現在送往 API 的請求）
 - MCP 的寫入工具只在 `--allow-write` 時註冊，且必須 `dry_run=false` **加** `confirm=true` 才會執行；再帶 `wait=true` 可同步等事件
 
+## 已知 API 怪癖
+
+實測踩到的、官方文件寫錯或沒寫的地方（`linode-agent` 內部已處理，但自己打 API 時要注意）：
+
+- **`/linode/instances/{id}/transfer` 的單位是混的**：`used` 是 **bytes**，但
+  `quota`／`billable` 是 **GB**（文件把三個都寫成 GB）。`/account/transfer` 則全部是 GB。
+  `linode-agent network usage` 已代為換算。
+- **`page_size` 只接受 25–500**：小於 25 會直接回 `HTTP 400 Must be 25-500`（文件未載明）。
+  client 會自動夾到合法區間。
+- **`X-RateLimit-Limit` 實際值跟文件不同**：實測是 `1840`，不是文件常見的 400。
+  一律以回應標頭為準，不要寫死。
+- **`openapi.yaml` 已 404**：文件站上的 spec 連結失效，所以 `spec search` 目前沒有做。
+
 ## 目前狀態
 
 已完成：

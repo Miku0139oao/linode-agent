@@ -72,6 +72,7 @@ func NewRoot(o *Options) *cobra.Command {
 		newEventsCmd(o),
 		newTagsCmd(o),
 		newAPICmd(o),
+		newNetworkCmd(o),
 		newTUICmd(o),
 		newMCPCmd(o),
 		newVersionCmd(o),
