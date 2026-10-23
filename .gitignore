@@ -1,0 +1,17 @@
+# build output
+/bin/
+*.exe
+
+# local state / logs
+*.log
+coverage.out
+*.test
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# never commit credentials or audit trails
+credentials
+*.jsonl
